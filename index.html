@@ -103,6 +103,36 @@ h1{font-size:17px;font-weight:600;text-align:center;color:var(--sub);margin-bott
 
 /* Footer */
 footer{text-align:center;color:var(--sub);font-size:12px;padding:16px 0 8px;opacity:.7}
+
+/* Timeline */
+.timeline{padding:4px 0 4px 12px}
+.tl-day{display:flex;gap:0;min-height:28px}
+.tl-marker{display:flex;flex-direction:column;align-items:center;width:32px;flex-shrink:0}
+.tl-line{width:2px;background:var(--border);flex:1;min-height:6px}
+.tl-line.inv{background:transparent}
+.tl-dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0;margin:1px 0}
+.tl-day.has-items .tl-dot,.tl-day.today .tl-dot{background:var(--sub)}
+.tl-day.today .tl-dot{background:var(--blue);width:10px;height:10px}
+.tl-content{flex:1;padding:0 12px 10px 6px;min-height:22px}
+.tl-content.empty{padding-bottom:0;min-height:14px}
+.tl-date-row{display:flex;align-items:center;gap:6px;padding:0 0 5px}
+.tl-date{font-size:13px;font-weight:500;color:var(--sub)}
+.tl-day.today .tl-date{font-weight:700;color:var(--blue)}
+.tl-day.past .tl-date{opacity:.55}
+.tl-today-pill{font-size:10px;font-weight:700;background:var(--blue);color:#fff;padding:1px 7px;border-radius:20px;letter-spacing:.3px}
+.tl-items{display:flex;flex-direction:column;gap:3px}
+.tl-item{display:flex;justify-content:space-between;align-items:center;padding:5px 10px;border-radius:8px;font-size:13px}
+.tl-day.past .tl-item{opacity:.55}
+.tl-item.income.confirmed{background:var(--green-bg)}
+.tl-item.income.pending{background:var(--green-bg);border:1px dashed var(--green);opacity:.7}
+.tl-item.expense.confirmed{background:var(--red-bg)}
+.tl-item.expense.pending{background:var(--red-bg);border:1px dashed var(--red);opacity:.7}
+.tl-lbl{font-weight:400;color:var(--text)}
+.tl-amt{font-weight:600}
+.tl-item.income .tl-amt{color:var(--green)}
+.tl-item.expense .tl-amt{color:var(--red)}
+.tl-net{margin-top:4px;font-size:12px;font-weight:700;text-align:right;padding-right:2px}
+.tl-net.pos{color:var(--green)}.tl-net.neg{color:var(--red)}
 </style>
 </head>
 <body>
@@ -312,6 +342,456 @@ footer{text-align:center;color:var(--sub);font-size:12px;padding:16px 0 8px;opac
     </div>
 </div>
 
-<footer>Bijgewerkt 23 juni 2026 om 21:34</footer>
+<div class="section">
+  <div class="section-header">Tijdlijn — 5 dagen terug · 25 dagen vooruit</div>
+  <div class="timeline">
+    <div class="tl-day past">
+      <div class="tl-marker">
+        <div class="tl-line inv"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">do 18 jun</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day past has-items">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date-row">
+          <span class="tl-date">vr 19 jun</span>
+          
+        </div>
+        <div class="tl-items"><div class="tl-item income confirmed">
+        <span class="tl-lbl">Salaris</span>
+        <span class="tl-amt">+ € 810,00</span>
+      </div><div class="tl-net pos">+€ 810,00</div></div>
+      </div>
+    </div><div class="tl-day past has-items">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date-row">
+          <span class="tl-date">za 20 jun</span>
+          
+        </div>
+        <div class="tl-items"><div class="tl-item income pending">
+        <span class="tl-lbl">Huurtoeslag</span>
+        <span class="tl-amt">+ € 221,00</span>
+      </div><div class="tl-item income pending">
+        <span class="tl-lbl">Zorgtoeslag</span>
+        <span class="tl-amt">+ € 131,00</span>
+      </div><div class="tl-net pos">+€ 352,00</div></div>
+      </div>
+    </div><div class="tl-day past">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">zo 21 jun</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day past">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">ma 22 jun</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day today" id="today">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date-row">
+          <span class="tl-date">di 23 jun</span>
+          <span class="tl-today-pill">Vandaag</span>
+        </div>
+        
+      </div>
+    </div><div class="tl-day has-items">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date-row">
+          <span class="tl-date">wo 24 jun</span>
+          
+        </div>
+        <div class="tl-items"><div class="tl-item income pending">
+        <span class="tl-lbl">DUO</span>
+        <span class="tl-amt">+ € 314,00</span>
+      </div><div class="tl-item income confirmed">
+        <span class="tl-lbl">Draaien</span>
+        <span class="tl-amt">+ € 240,00</span>
+      </div><div class="tl-item expense confirmed">
+        <span class="tl-lbl">Soos</span>
+        <span class="tl-amt">− € 47,50</span>
+      </div><div class="tl-item expense confirmed">
+        <span class="tl-lbl">Huisrekening</span>
+        <span class="tl-amt">− € 170,00</span>
+      </div><div class="tl-item expense confirmed">
+        <span class="tl-lbl">Clubrekening</span>
+        <span class="tl-amt">− € 360,00</span>
+      </div><div class="tl-net neg">€ -23,50</div></div>
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">do 25 jun</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day has-items">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date-row">
+          <span class="tl-date">vr 26 jun</span>
+          
+        </div>
+        <div class="tl-items"><div class="tl-item expense confirmed">
+        <span class="tl-lbl">Telefoonabonnement</span>
+        <span class="tl-amt">− € 33,00</span>
+      </div><div class="tl-net neg">€ -33,00</div></div>
+      </div>
+    </div><div class="tl-day has-items">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date-row">
+          <span class="tl-date">za 27 jun</span>
+          
+        </div>
+        <div class="tl-items"><div class="tl-item expense confirmed">
+        <span class="tl-lbl">Zorgverzekering</span>
+        <span class="tl-amt">− € 150,00</span>
+      </div><div class="tl-net neg">€ -150,00</div></div>
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">zo 28 jun</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">ma 29 jun</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">di 30 jun</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day has-items">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date-row">
+          <span class="tl-date">wo 1 jul</span>
+          
+        </div>
+        <div class="tl-items"><div class="tl-item income pending">
+        <span class="tl-lbl">Ouders</span>
+        <span class="tl-amt">+ € 500,00</span>
+      </div><div class="tl-item expense confirmed">
+        <span class="tl-lbl">Huur</span>
+        <span class="tl-amt">− € 550,00</span>
+      </div><div class="tl-net neg">€ -50,00</div></div>
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">do 2 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">vr 3 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">za 4 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">zo 5 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">ma 6 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">di 7 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">wo 8 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">do 9 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">vr 10 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">za 11 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">zo 12 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">ma 13 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">di 14 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">wo 15 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">do 16 jul</span>
+          
+        </div>
+        
+      </div>
+    </div><div class="tl-day has-items">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-content">
+        <div class="tl-date-row">
+          <span class="tl-date">vr 17 jul</span>
+          
+        </div>
+        <div class="tl-items"><div class="tl-item income pending">
+        <span class="tl-lbl">Salaris</span>
+        <span class="tl-amt">+ ...</span>
+      </div></div>
+      </div>
+    </div><div class="tl-day">
+      <div class="tl-marker">
+        <div class="tl-line"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-line inv"></div>
+      </div>
+      <div class="tl-content empty">
+        <div class="tl-date-row">
+          <span class="tl-date">za 18 jul</span>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>Bijgewerkt 23 juni 2026 om 21:48</footer>
+<script>document.getElementById('today')?.scrollIntoView({block:'center'});</script>
 </body>
 </html>

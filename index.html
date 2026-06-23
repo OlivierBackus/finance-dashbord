@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Finance Dashboard</title>
+<style>
+:root {
+  --bg:        #f2f2f7;
+  --card:      #ffffff;
+  --text:      #1c1c1e;
+  --sub:       #6d6d72;
+  --green:     #34c759;
+  --green-bg:  #e8f8ec;
+  --red:       #ff3b30;
+  --red-bg:    #ffeceb;
+  --blue:      #007aff;
+  --blue-bg:   #e5f1ff;
+  --border:    rgba(0,0,0,0.08);
+  --shadow:    0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+  --radius:    16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #000000;
+    --card:     #1c1c1e;
+    --text:     #ffffff;
+    --sub:      #8e8e93;
+    --green-bg: #0d2d18;
+    --red-bg:   #2d0d0d;
+    --blue-bg:  #0d1a2d;
+    --border:   rgba(255,255,255,0.08);
+    --shadow:   0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+  padding-top:max(env(safe-area-inset-top),20px);
+  max-width:480px;
+  margin:0 auto;
+  -webkit-font-smoothing:antialiased;
+}
+h1{font-size:17px;font-weight:600;text-align:center;color:var(--sub);margin-bottom:20px;letter-spacing:.2px}
+
+/* Balance card */
+.balance-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:28px 24px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  margin-bottom:12px;
+}
+.balance-label{font-size:13px;font-weight:500;color:var(--sub);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.balance-amount{font-size:52px;font-weight:700;letter-spacing:-2px;line-height:1}
+.balance-amount.green{color:var(--green)}
+.balance-amount.red{color:var(--red)}
+.balance-meta{margin-top:14px;display:flex;justify-content:center;gap:24px}
+.balance-meta-item{text-align:center}
+.balance-meta-item .m-label{font-size:11px;color:var(--sub);font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+.balance-meta-item .m-value{font-size:17px;font-weight:600;margin-top:2px}
+.balance-meta-item .m-value.green{color:var(--green)}
+.balance-meta-item .m-value.red{color:var(--red)}
+.divider{width:1px;background:var(--border)}
+
+/* Section */
+.section{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.section-header{
+  padding:14px 16px 10px;
+  font-size:13px;font-weight:600;
+  color:var(--sub);
+  text-transform:uppercase;letter-spacing:.6px;
+  border-bottom:1px solid var(--border);
+}
+.row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--border)}
+.row:last-child{border-bottom:none}
+.row-left{display:flex;align-items:center;gap:10px}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot.green{background:var(--green)}
+.dot.red{background:var(--red)}
+.label{font-size:15px;font-weight:400}
+.amount{font-size:15px;font-weight:600}
+.amount.green{color:var(--green)}
+.amount.red{color:var(--red)}
+.badge{font-size:10px;font-weight:600;padding:2px 7px;border-radius:20px;letter-spacing:.3px}
+.badge.pending{background:var(--blue-bg);color:var(--blue)}
+.badge.variable{background:var(--red-bg);color:var(--red)}
+
+/* Expense progress */
+.expense-item .row{border-bottom:none;padding-bottom:6px}
+.expense-item{border-bottom:1px solid var(--border)}
+.expense-item:last-child{border-bottom:none}
+.progress-track{margin:0 16px 12px;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:var(--red);border-radius:2px;transition:width .4s ease}
+
+/* Footer */
+footer{text-align:center;color:var(--sub);font-size:12px;padding:16px 0 8px;opacity:.7}
+</style>
+</head>
+<body>
+<h1>juni 2026</h1>
+
+<div class="balance-card">
+  <div class="balance-label">Beschikbaar saldo</div>
+  <div class="balance-amount green">€ 355,50</div>
+  <div class="balance-meta">
+    <div class="balance-meta-item">
+      <div class="m-label">Inkomsten</div>
+      <div class="m-value green">€ 1.166,00</div>
+    </div>
+    <div class="divider"></div>
+    <div class="balance-meta-item">
+      <div class="m-label">Lasten</div>
+      <div class="m-value red">€ 810,50</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Inkomsten</div>
+  
+    <div class="row">
+      <div class="row-left">
+        <span class="dot green"></span>
+        <span class="label">Ouders</span>
+        <span class="badge pending">Verwacht</span>
+      </div>
+      <span class="amount green">€ 500,00</span>
+    </div>
+    <div class="row">
+      <div class="row-left">
+        <span class="dot green"></span>
+        <span class="label">DUO</span>
+        <span class="badge pending">Verwacht</span>
+      </div>
+      <span class="amount green">€ 314,00</span>
+    </div>
+    <div class="row">
+      <div class="row-left">
+        <span class="dot green"></span>
+        <span class="label">Huurtoeslag</span>
+        <span class="badge pending">Verwacht</span>
+      </div>
+      <span class="amount green">€ 221,00</span>
+    </div>
+    <div class="row">
+      <div class="row-left">
+        <span class="dot green"></span>
+        <span class="label">Zorgtoeslag</span>
+        <span class="badge pending">Verwacht</span>
+      </div>
+      <span class="amount green">€ 131,00</span>
+    </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Lasten</div>
+  
+    <div class="expense-item">
+      <div class="row">
+        <div class="row-left">
+          <span class="dot red"></span>
+          <span class="label">Huur</span>
+          
+        </div>
+        <span class="amount red">€ 550,00</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" style="width:100%"></div>
+      </div>
+    </div>
+    <div class="expense-item">
+      <div class="row">
+        <div class="row-left">
+          <span class="dot red"></span>
+          <span class="label">Zorgverzekering</span>
+          
+        </div>
+        <span class="amount red">€ 150,00</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" style="width:27%"></div>
+      </div>
+    </div>
+    <div class="expense-item">
+      <div class="row">
+        <div class="row-left">
+          <span class="dot red"></span>
+          <span class="label">Telefoonabonnement</span>
+          
+        </div>
+        <span class="amount red">€ 33,00</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" style="width:6%"></div>
+      </div>
+    </div>
+    <div class="expense-item">
+      <div class="row">
+        <div class="row-left">
+          <span class="dot red"></span>
+          <span class="label">Abonnementen</span>
+          
+        </div>
+        <span class="amount red">€ 30,00</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" style="width:5%"></div>
+      </div>
+    </div>
+    <div class="expense-item">
+      <div class="row">
+        <div class="row-left">
+          <span class="dot red"></span>
+          <span class="label">Soos</span>
+          <span class="badge variable">Variabel</span>
+        </div>
+        <span class="amount red">€ 47,50</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" style="width:9%"></div>
+      </div>
+    </div>
+</div>
+
+<footer>Bijgewerkt 23 juni 2026 om 17:06</footer>
+</body>
+</html>
